@@ -1,0 +1,29 @@
+games.erb
+
+
+  <button class="gamesTable" type="button">View Games Table</button>
+
+  <div class="gameTable">
+    <table>
+      <tr>
+        <th>Tournament #</th>
+        <th>Player 1</th>
+        <th>Player 2</th>
+        <th>Player 1 Move</th>
+        <th>Player 2 Move</th>
+        <th>Winner</th>
+      </tr>
+      <% @games.each do |game| %>
+      <tr>
+        <td><%= game.tournament_id %></td>
+        <td><%= (game.player_1).name %></td>
+        <td><%= (game.player_2).name %></td>
+        <td><%= game.move1 %></td>
+        <td><%= game.move2 %></td>
+        <td><%= (game.winner).name %></td>
+      </tr>
+      <% end %>
+    </table>
+    <button class="hideTable" type="button">Hide Games Table</button><br>
+    <img src='/images/choosewisely_fullpic_artwork.jpg'>
+  </div>

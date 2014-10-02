@@ -1,6 +1,7 @@
 require 'sinatra/base'
 require_relative '../lib/tourney.rb'
 require 'pry-byebug'
+require 'digest/sha2'
 
 class RPS::Server < Sinatra::Application
 
@@ -31,7 +32,7 @@ set :bind, '0.0.0.0'
   end
 
   post '/players' do
-    RPS::Player.create(name: params["player-name"], email: params["player-email"], password: params["player-password"])
+    RPS::Player.create(name: params["player-name"], email: params["player-email"], password: Digest::SHA2.hexdigest(params["player-password"]))
     redirect to('/players')
   end
 
@@ -41,6 +42,14 @@ set :bind, '0.0.0.0'
     erb :one_tournament
   end
 
+  post '/tournaments' do
+    @new = RPS::Tournament.create
+    RPS::Game.create(player_1_id: params["game-player1"], player_2_id: params["game-player2"], tournament_id: @new.id)
+    RPS::Game.create(player_1_id: params["game-player3"], player_2_id: params["game-player4"], tournament_id: @new.id)
+    RPS::Game.create(player_1_id: params["game-player5"], player_2_id: params["game-player6"], tournament_id: @new.id)
+    RPS::Game.create(player_1_id: params["game-player7"], player_2_id: params["game-player8"], tournament_id: @new.id)
+    redirect to("/tournaments/#{@new.id}")
+  end
 
 
 

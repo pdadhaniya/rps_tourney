@@ -5,7 +5,11 @@
   <h4><a href='/'>Home</a></h4>
 
   <p><% (RPS::Game.where(tournament_id: @tournament.id)).each do |game| %>
-  Game <%= game.id %> was won by <%= game.winner.name %>.<br>
+    <% if game.winner == nil %>
+      Game <%= game.id %> is still in progress.<br>
+    <% else %>
+      Game <%= game.id %> was won by <%= game.winner.name %>.<br>
+    <% end %>
   <% end %>
   </p>
 

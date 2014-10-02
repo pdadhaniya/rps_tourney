@@ -6,7 +6,11 @@
   <h4><a href='/tournaments/new'>New Tournament</a></h4>
   
   <% @tournaments.each do |tournament| %>
-  <p>Tournament #<%= tournament.id %> was won by <%= (tournament.player).name %>. <a href='/tournaments/<%= tournament.id %>'>See Details!</a></p>
+    <% if tournament.player == nil %>
+      <p>Tournament #<%= tournament.id %> is in progress.</p>
+    <% else %>
+      <p>Tournament #<%= tournament.id %> was won by <%= (tournament.player).name %>. <a href='/tournaments/<%= tournament.id %>'>See Details!</a></p>
+    <% end %>
   <% end %>
 
 </div>

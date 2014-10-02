@@ -5,7 +5,11 @@
   <h4><a href='/tournaments/new'>New Tournament</a></h4>
 
   <% @games.each do |game| %>
-  <p><%= (game.player_1).name %> faced off against <%= (game.player_2).name %> in Tournament #<%= game.tournament_id %>. <%= (game.player_1).name %> played <%= game.move1 %> while <%= (game.player_2).name %> played <%= game.move2 %>. <%= (game.winner).name %> emerged victorious.</p>
+    <% if game.winner == nil %>
+      <p>Game in Tournament #<%= game.tournament_id %> between <%= (game.player_1).name %> and <%= (game.player_2).name %> is still in progress.</p>
+    <% else %>
+      <p><%= (game.player_1).name %> faced off against <%= (game.player_2).name %> in Tournament #<%= game.tournament_id %>. <%= (game.player_1).name %> played <%= game.move1 %> while <%= (game.player_2).name %> played <%= game.move2 %>. <%= (game.winner).name %> emerged victorious.</p>
+    <% end %>
   <% end %>
 
   <button class="gamesTable" type="button">View Games Table</button>
@@ -21,20 +25,21 @@
         <th>Winner</th>
       </tr>
       <% @games.each do |game| %>
-      <tr>
-        <td><%= game.tournament_id %></td>
-        <td><%= (game.player_1).name %></td>
-        <td><%= (game.player_2).name %></td>
-        <td><%= game.move1 %></td>
-        <td><%= game.move2 %></td>
-        <td><%= (game.winner).name %></td>
-      </tr>
+        <% if game.winner != nil %>
+          <tr>
+            <td><%= game.tournament_id %></td>
+            <td><%= (game.player_1).name %></td>
+            <td><%= (game.player_2).name %></td>
+            <td><%= game.move1 %></td>
+            <td><%= game.move2 %></td>
+            <td><%= (game.winner).name %></td>
+          </tr>
+        <% end %>
       <% end %>
     </table>
     <button class="hideTable" type="button">Hide Games Table</button><br>
     <img src='/images/choosewisely_fullpic_artwork.jpg'>
   </div>
-
 
 
 </div>
