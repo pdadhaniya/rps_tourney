@@ -25,12 +25,21 @@ set :bind, '0.0.0.0'
     erb :tournaments
   end
 
+  get '/tournaments/new' do
+    @players = RPS::Player.all
+    erb :new_tournament
+  end
+
   post '/players' do
     RPS::Player.create(name: params["player-name"], email: params["player-email"], password: params["player-password"])
     redirect to('/players')
   end
 
-
+  get '/tournaments/:id' do
+    @games = RPS::Game.all
+    @tournament = RPS::Tournament.find(params[:id])
+    erb :one_tournament
+  end
 
 
 

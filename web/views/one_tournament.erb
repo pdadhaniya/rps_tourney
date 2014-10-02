@@ -1,0 +1,13 @@
+<div class='oneTournament'>
+
+  <h1>Tournament <%= @tournament.id %>!</h1>
+
+  <h4><a href='/'>Home</a></h4>
+
+  <p><% (RPS::Game.where(tournament_id: @tournament.id)).each do |game| %>
+  Game <%= game.id %> was won by <%= game.winner.name %>.<br>
+  <% end %>
+  </p>
+
+
+</div>

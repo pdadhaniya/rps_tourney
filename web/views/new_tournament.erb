@@ -1,0 +1,61 @@
+<div class='newTournament'>
+
+  <h1>New Tournament!</h1>
+
+  <p>Please add 8 Players for the new Tournament!</p>
+
+  <form>
+    <label for="player1">Player 1:</label>
+    <select id="player1" name="game-player1">
+    <% @players.each do |player| %>
+    <option value="<%=player.name%>"><%= player.name %></option>
+    <% end %>
+    </select><br>
+    <label for="player2">Player 2:</label>
+    <select id="player2" name="game-player2">
+    <% @players.each do |player| %>
+    <option value="<%=player.name%>"><%= player.name %></option>
+    <% end %>
+    </select><br>
+    <label for="player3">Player 3:</label>
+    <select id="player3" name="game-player3">
+    <% @players.each do |player| %>
+    <option value="<%=player.name%>"><%= player.name %></option>
+    <% end %>
+    </select><br>
+    <label for="player4">Player 4:</label>
+    <select id="player5" name="game-player4">
+    <% @players.each do |player| %>
+    <option value="<%=player.name%>"><%= player.name %></option>
+    <% end %>
+    </select><br>
+    <label for="player5">Player 5:</label>
+    <select id="player5" name="game-player5">
+    <% @players.each do |player| %>
+    <option value="<%=player.name%>"><%= player.name %></option>
+    <% end %>
+    </select><br>
+    <label for="player6">Player 6:</label>
+    <select id="player6" name="game-player6">
+    <% @players.each do |player| %>
+    <option value="<%=player.name%>"><%= player.name %></option>
+    <% end %>
+    </select><br>
+    <label for="player7">Player 7:</label>
+    <select id="player7" name="game-player7">
+    <% @players.each do |player| %>
+    <option value="<%=player.name%>"><%= player.name %></option>
+    <% end %>
+    </select><br>
+    <label for="player8">Player 8:</label>
+    <select id="player8" name="game-player8">
+    <% @players.each do |player| %>
+    <option value="<%=player.name%>"><%= player.name %></option>
+    <% end %>
+    </select><br><br>
+    <input type="submit">
+  </form>
+
+
+
+</div>
