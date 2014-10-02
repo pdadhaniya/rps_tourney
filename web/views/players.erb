@@ -1,0 +1,28 @@
+<div class='playersPage'>
+  <h1>Players!</h1>
+
+  <% @players.each do |player| %>
+  <p><%= player.name %> <%= player.email %></p>
+  <% end %>
+
+  <button class="addPlayer" type="button">Add Player!</button>
+  <br>
+  <br>
+
+  <div class="playerForm">
+    <form action="/players" method="post">
+
+      <label for="name">Name:</label>
+      <input name="player-name" id="name" type="text"><br>
+
+      <label for="email">Email:</label>
+      <input name="player-email" id="email" type="email"><br>
+
+      <label for="password">Password:</label>
+      <input name="player-password" id="password" type="password"><br>
+      <input type="submit">
+
+    </form>
+  </div>
+
+</div>
