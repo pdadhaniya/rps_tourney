@@ -1,0 +1,11 @@
+<div class='gamesPage'>
+  <h1>Games!</h1>
+  <% @games.each do |game| %>
+  <p><%= RPS::Player.find((game.player_1_id)).name %> faced off against <%= RPS::Player.find((game.player_2_id)).name %> in Tournament #<%= game.tournaments_id %>. <%= RPS::Player.find((game.player_1_id)).name %> played <%= game.move1 %> while <%= RPS::Player.find((game.player_2_id)).name %> played <%= game.move2 %>. <%= RPS::Player.find((game.winner_id)).name %> emerged victorious.</p>
+  <% end %>
+
+
+
+
+
+</div>

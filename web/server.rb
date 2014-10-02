@@ -20,6 +20,11 @@ set :bind, '0.0.0.0'
     erb :games
   end
 
+  get '/tournaments' do
+    @tournaments = RPS::Tournament.all
+    erb :tournaments
+  end
+
   post '/players' do
     RPS::Player.create(name: params["player-name"], email: params["player-email"], password: params["player-password"])
     redirect to('/players')
