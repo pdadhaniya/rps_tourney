@@ -1,0 +1,11 @@
+<div class="tournamentsPage">
+  
+  <h1>Tournaments</h1>
+  
+  <h4><a href='/'>Home</a></h4>
+  
+  <% @tournaments.each do |tournament| %>
+  <p>Tournament #<%= tournament.id %> was won by <%= (tournament.player).name %>.</p>
+  <% end %>
+
+</div>

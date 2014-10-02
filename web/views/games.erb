@@ -1,10 +1,37 @@
 <div class='gamesPage'>
   <h1>Games!</h1>
+
+  <h4><a href='/'>Home</a></h4>
   <% @games.each do |game| %>
-  <p><%= RPS::Player.find((game.player_1_id)).name %> faced off against <%= RPS::Player.find((game.player_2_id)).name %> in Tournament #<%= game.tournaments_id %>. <%= RPS::Player.find((game.player_1_id)).name %> played <%= game.move1 %> while <%= RPS::Player.find((game.player_2_id)).name %> played <%= game.move2 %>. <%= RPS::Player.find((game.winner_id)).name %> emerged victorious.</p>
+  <p><%= (game.player_1).name %> faced off against <%= (game.player_2).name %> in Tournament #<%= game.tournament_id %>. <%= (game.player_1).name %> played <%= game.move1 %> while <%= (game.player_2).name %> played <%= game.move2 %>. <%= (game.winner).name %> emerged victorious.</p>
   <% end %>
 
+  <button class="gamesTable" type="button">View Games Table</button>
 
+  <div class="gameTable">
+    <table>
+      <tr>
+        <th>Tournament #</th>
+        <th>Player 1</th>
+        <th>Player 2</th>
+        <th>Player 1 Move</th>
+        <th>Player 2 Move</th>
+        <th>Winner</th>
+      </tr>
+      <% @games.each do |game| %>
+      <tr>
+        <td><%= game.tournament_id %></td>
+        <td><%= (game.player_1).name %></td>
+        <td><%= (game.player_2).name %></td>
+        <td><%= game.move1 %></td>
+        <td><%= game.move2 %></td>
+        <td><%= (game.winner).name %></td>
+      </tr>
+      <% end %>
+    </table>
+    <button class="hideTable" type="button">Hide Games Table</button><br>
+    <img src='/images/choosewisely_fullpic_artwork.jpg'>
+  </div>
 
 
 

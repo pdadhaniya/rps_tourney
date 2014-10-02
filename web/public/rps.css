@@ -5,3 +5,18 @@ body {
 .playerForm {
   display: none;
 }
+
+.gameTable {
+  display: none;
+}
+
+table {
+  border: 1px solid black;
+  border-collapse: collapse;
+}
+
+th, td {
+  border-left: solid 1px black;
+  border-bottom: solid 1px black;
+  padding: 10px;
+}
