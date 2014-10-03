@@ -87,5 +87,10 @@ class RPS::Server < Sinatra::Application
     redirect to("/games/#{@game.id}")
   end
 
+  delete '/logout' do
+      session[:player_id] = nil
+      redirect to('/')
+    end
+
 
 end
