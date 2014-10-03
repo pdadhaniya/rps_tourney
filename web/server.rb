@@ -5,10 +5,25 @@ require 'digest/sha2'
 
 class RPS::Server < Sinatra::Application
 
-set :bind, '0.0.0.0'
+  configure do 
+    set :bind, '0.0.0.0'
+    enable :sessions
+  end
 
   get '/' do
-    erb :index
+    if session[:player_id]
+      erb :index
+    else
+      redirect to('/login')
+    end
+  end
+
+  get '/login' do
+    erb :login
+  end
+
+  get '/signup' do
+    erb :signup
   end
 
   get '/players' do
@@ -29,6 +44,14 @@ set :bind, '0.0.0.0'
   get '/tournaments/new' do
     @players = RPS::Player.all
     erb :new_tournament
+  end
+
+  post '/sessions' do
+    player = RPS::Player.find_by(name: params[:name])
+    if player.validate_password(params[:password])
+      session[:player_id] = player.id
+    end
+    redirect to('/')
   end
 
   post '/players' do

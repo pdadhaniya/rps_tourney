@@ -1,6 +1,4 @@
-$('.addPlayer').click(function() {
-  $('.playerForm').css('display', 'block');
-});
+
 
 $('.gamesTable').click(function() {
   $('.gameTable').css('display', 'block');
@@ -17,3 +15,7 @@ $('.seePlayer').click(function() {
 $('.completeGame').click(function() {
   window.location = '/games/' + $(this).attr('id');
 });
+
+// $(document).ready(function(){
+//   $('.playerForm').show();
+// })
