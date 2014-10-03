@@ -56,6 +56,13 @@ set :bind, '0.0.0.0'
     redirect to("/tournaments/#{@new.id}")
   end
 
+  post '/games/:id' do
+    @game = RPS::Game.find(params[:id])
+    @game.move1 = params["move-player1"]
+    @game.move2 = params["move-player2"]
+    @game.save
+    redirect to("/games/#{@game.id}")
+  end
 
 
 end

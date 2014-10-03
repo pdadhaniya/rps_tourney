@@ -11,7 +11,7 @@ $('.hideTable').click(function() {
 });
 
 $('.seePlayer').click(function() {
-  $('.singleInfo').css('display', 'block');
+  $('.singleInfo').toggle('show');
 });
 
 $('.completeGame').click(function() {

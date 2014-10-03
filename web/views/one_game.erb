@@ -8,9 +8,26 @@
 
   <p>It is a heavyweight matchup between <%= (@game.player_1).name %> and <%= (@game.player_2).name %>.</p>
 
-  <p><%= (@game.player_1).name %> select your move.</p>
-  <p><button class="p1Rock" type="button">Rock</button><button class="p1Paper" type="button">Paper</button><button class="p1Scissors" type="button">Scissors</button></p><br>
-  <p><%= (@game.player_2).name %> select your move.</p>
-  <p><button class="p2Rock" type="button">Rock</button><button class="p2Paper" type="button">Paper</button><button class="p2Scissors" type="button">Scissors</button></p><br>
+  <div class="playerMoves">
+    Select Your Move:<br>
+    <form action="/games/<%=@game.id%>" method="post">
+      <p><%= (@game.player_1).name %>:
+      <select required id='player1move' name='move-player1'>
+        <option selected disabled>Choose here!</option>
+        <option value="rock">Rock</option>
+        <option value="paper">Paper</option>
+        <option value="scissors">Scissors</option>
+      </select><br>
+      <p><%= (@game.player_2).name %>:
+      <select required selected="Make a Move!" id='player2move' name='move-player2'>
+        <option selected disabled>Choose here!</option>
+        <option value="rock">Rock</option>
+        <option value="paper">Paper</option>
+        <option value="scissors">Scissors</option>
+      </select><br><br>
+      <input type="submit">
+    </form>
+  </div>
+
 
 </div>
