@@ -36,6 +36,11 @@ set :bind, '0.0.0.0'
     redirect to('/players')
   end
 
+  get '/games/:id' do
+    @games = RPS::Game.find(params[:id])
+    erb :one_game
+  end
+
   get '/tournaments/:id' do
     @games = RPS::Game.all
     @tournament = RPS::Tournament.find(params[:id])

@@ -2,10 +2,17 @@
   <h1>Players!</h1>
 
   <h4><a href='/'>Home</a></h4>
-  
-  <% @players.each do |player| %>
-  <p><%= player.name %> <%= player.email %></p>
-  <% end %>
+
+  <div class="playerInfo">
+    <% @players.each do |player| %>
+    <p><%= player.name %>
+    <button class="seePlayer" type="button">See Player Info!</button>
+    <div class="singleInfo">
+      <%= player.email %>
+    </div>
+    </p>
+    <% end %>
+  </div>
 
   <button class="addPlayer" type="button">Add Player!</button>
   <br>

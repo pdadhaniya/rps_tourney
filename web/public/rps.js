@@ -9,3 +9,7 @@ $('.gamesTable').click(function() {
 $('.hideTable').click(function() {
   $('.gameTable').css('display', 'none');
 })
+
+$('.seePlayer').click(function() {
+  $('.singleInfo').css('display', 'block');
+})

@@ -20,3 +20,7 @@ th, td {
   border-bottom: solid 1px black;
   padding: 10px;
 }
+
+.singleInfo {
+  display: none;
+}
