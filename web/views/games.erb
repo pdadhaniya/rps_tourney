@@ -6,7 +6,7 @@
 
   <% @games.each do |game| %>
     <% if game.winner == nil %>
-      <p>Game in Tournament #<%= game.tournament_id %> between <%= (game.player_1).name %> and <%= (game.player_2).name %> is still in progress.</p>
+      <p>Game in Tournament #<%= game.tournament_id %> between <%= (game.player_1).name %> and <%= (game.player_2).name %> is still in progress.    <button id='<%=game.id%>' class="completeGame" type="button">Complete Game!</button></p>
     <% else %>
       <p><%= (game.player_1).name %> faced off against <%= (game.player_2).name %> in Tournament #<%= game.tournament_id %>. <%= (game.player_1).name %> played <%= game.move1 %> while <%= (game.player_2).name %> played <%= game.move2 %>. <%= (game.winner).name %> emerged victorious.</p>
     <% end %>

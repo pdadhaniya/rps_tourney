@@ -1,0 +1,16 @@
+<div class="oneGame">
+  <h1>Gametime!</h1>
+  <h4><a href='/'>Home</a></h4>
+  <h4><a href='/games'>Games</a></h4>
+
+
+  <p>This game is a part of Tournament <%= @game.tournament_id %></p>
+
+  <p>It is a heavyweight matchup between <%= (@game.player_1).name %> and <%= (@game.player_2).name %>.</p>
+
+  <p><%= (@game.player_1).name %> select your move.</p>
+  <p><button class="p1Rock" type="button">Rock</button><button class="p1Paper" type="button">Paper</button><button class="p1Scissors" type="button">Scissors</button></p><br>
+  <p><%= (@game.player_2).name %> select your move.</p>
+  <p><button class="p2Rock" type="button">Rock</button><button class="p2Paper" type="button">Paper</button><button class="p2Scissors" type="button">Scissors</button></p><br>
+
+</div>

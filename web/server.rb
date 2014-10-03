@@ -37,7 +37,7 @@ set :bind, '0.0.0.0'
   end
 
   get '/games/:id' do
-    @games = RPS::Game.find(params[:id])
+    @game = RPS::Game.find(params[:id])
     erb :one_game
   end
 
