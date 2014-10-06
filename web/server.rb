@@ -13,6 +13,7 @@ class RPS::Server < Sinatra::Application
 
   get '/' do
     if session[:player_id]
+      @current_player = RPS::Player.find(session[:player_id]).name
       erb :index
     else
       redirect to('/login')
@@ -62,6 +63,7 @@ class RPS::Server < Sinatra::Application
 
   get '/games/:id' do
     @game = RPS::Game.find(params[:id])
+    @current_player = RPS::Player.find(session[:player_id]).name
     erb :one_game
   end
 
@@ -77,10 +79,14 @@ class RPS::Server < Sinatra::Application
     RPS::Game.create(player_1_id: params["game-player3"], player_2_id: params["game-player4"], tournament_id: @new.id)
     RPS::Game.create(player_1_id: params["game-player5"], player_2_id: params["game-player6"], tournament_id: @new.id)
     RPS::Game.create(player_1_id: params["game-player7"], player_2_id: params["game-player8"], tournament_id: @new.id)
+    RPS::Game.create(tournament_id: @new.id)
+    RPS::Game.create(tournament_id: @new.id)
+    RPS::Game.create(tournament_id: @new.id)
     redirect to("/tournaments/#{@new.id}")
   end
 
   post '/games/:id' do
+    @current_player = RPS::Player.find(session[:player_id]).name
     @game = RPS::Game.find(params[:id])
     @game.move1 = params["move-player1"]
     @game.move2 = params["move-player2"]
@@ -94,9 +100,9 @@ class RPS::Server < Sinatra::Application
   end
 
   delete '/logout' do
-      session[:player_id] = nil
-      redirect to('/')
-    end
+    session[:player_id] = nil
+    redirect to('/')
+  end
 
 
 end
