@@ -2,6 +2,7 @@ require 'sinatra/base'
 require_relative '../lib/tourney.rb'
 require 'pry-byebug'
 require 'digest/sha2'
+require 'rock_pape_scis'
 
 class RPS::Server < Sinatra::Application
 
@@ -83,6 +84,15 @@ class RPS::Server < Sinatra::Application
     @game = RPS::Game.find(params[:id])
     @game.move1 = params["move-player1"]
     @game.move2 = params["move-player2"]
+    puts (@game.player_1).name
+    puts (@game.player_2).name
+    puts @game.move1
+    puts @game.move2
+    @result = RockPapeScis.play({name: (@game.player_1).name, move: @game.move1}, {name: (@game.player_2).name, move: @game.move2})
+    puts @result
+    @winner = (RPS::Player.find_by name: @result).id
+    puts @winner
+    @game.winner_id = @winner
     @game.save
     redirect to("/games/#{@game.id}")
   end
